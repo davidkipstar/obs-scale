@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@types/web-bluetooth": "^0.0.17",
     "@vueuse/core": "^10.3.0",
     "vue": "^3.3.4"
   },

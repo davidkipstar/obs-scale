@@ -1,11 +1,9 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
 import { pausableWatch, useBluetooth } from '@vueuse/core'
+// import type { BluetoothRemoteGATTCharacteristic } from '@types/web-bluetooth'
 import type { BluetoothRemoteGATTCharacteristic } from 'web-bluetooth'
-i
-interface BLEEvent { 
-  value: BluetoothRemoteGATTCharacteristic
-}
+
 /*
 *  
 *  
