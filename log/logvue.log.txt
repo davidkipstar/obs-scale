@@ -1,0 +1,348 @@
+nRF Connect, 2023-08-20
+SWAN (03:B3:EC:8D:F1:21)
+V	21:01:12.129	Disconnecting...
+D	21:01:12.129	gatt.disconnect()
+D	21:01:12.142	[Callback] Connection state changed with status: 0 and new state: DISCONNECTED (0)
+I	21:01:12.142	Disconnected
+D	21:01:13.178	[Broadcast] Action received: android.bluetooth.device.action.ACL_DISCONNECTED
+D	21:01:13.878	gatt.close()
+D	21:01:13.881	wait(200)
+V	21:01:14.082	Connecting to 03:B3:EC:8D:F1:21...
+D	21:01:14.082	gatt = device.connectGatt(autoConnect = false, TRANSPORT_LE, preferred PHY = LE 1M)
+D	21:01:14.230	[Callback] Connection state changed with status: 0 and new state: CONNECTED (2)
+I	21:01:14.230	Connected to 03:B3:EC:8D:F1:21
+V	21:01:14.240	Discovering services...
+D	21:01:14.241	gatt.discoverServices()
+D	21:01:14.249	[Broadcast] Action received: android.bluetooth.device.action.ACL_CONNECTED
+I	21:01:14.560	Connection parameters updated (interval: 12.5ms, latency: 0, timeout: 10000ms)
+I	21:01:14.713	Connection parameters updated (interval: 7.5ms, latency: 0, timeout: 5000ms)
+D	21:01:14.926	[Callback] Services discovered with status: 0
+I	21:01:14.926	Services discovered
+V	21:01:14.928	Generic Access (0x1800)
+- Device Name [R] (0x2A00)
+- Appearance [R] (0x2A01)
+- Peripheral Privacy Flag [R W] (0x2A02)
+- Peripheral Preferred Connection Parameters [R] (0x2A04)
+Generic Attribute (0x1801)
+- Service Changed [I R] (0x2A05)
+   Client Characteristic Configuration (0x2902)
+Unknown Service (d618d000-6000-1000-8000-000000000000)
+- Unknown Characteristic [W] (d618d001-6000-1000-8000-000000000000)
+- Unknown Characteristic [N WNR] (d618d002-6000-1000-8000-000000000000)
+   Client Characteristic Configuration (0x2902)
+Unknown Service (0000ffb0-0000-1000-8000-00805f9b34fb)
+- Unknown Characteristic [N] (0000ffb2-0000-1000-8000-00805f9b34fb)
+   Client Characteristic Configuration (0x2902)
+   Characteristic User Description (0x2901)
+- Unknown Characteristic [WNR] (0000ffb1-0000-1000-8000-00805f9b34fb)
+   Client Characteristic Configuration (0x2902)
+   Characteristic User Description (0x2901)
+- Unknown Characteristic [N R WNR] (0000ffb3-0000-1000-8000-00805f9b34fb)
+   Client Characteristic Configuration (0x2902)
+   Characteristic User Description (0x2901)
+D	21:01:14.929	gatt.setCharacteristicNotification(00002a05-0000-1000-8000-00805f9b34fb, true)
+D	21:01:14.931	gatt.setCharacteristicNotification(d618d002-6000-1000-8000-000000000000, true)
+D	21:01:14.932	gatt.setCharacteristicNotification(0000ffb2-0000-1000-8000-00805f9b34fb, true)
+D	21:01:14.934	gatt.setCharacteristicNotification(0000ffb3-0000-1000-8000-00805f9b34fb, true)
+I	21:01:15.008	Connection parameters updated (interval: 12.5ms, latency: 0, timeout: 10000ms)
+V	21:01:26.422	Enabling notifications for 0000ffb2-0000-1000-8000-00805f9b34fb
+D	21:01:26.422	gatt.setCharacteristicNotification(0000ffb2-0000-1000-8000-00805f9b34fb, true)
+D	21:01:26.426	gatt.writeDescriptor(00002902-0000-1000-8000-00805f9b34fb, value=0x0100)
+I	21:01:26.456	Data written to descr. 00002902-0000-1000-8000-00805f9b34fb, value: (0x) 01-00
+A	21:01:26.456	"Notifications enabled" sent
+V	21:01:26.461	Notifications enabled for 0000ffb2-0000-1000-8000-00805f9b34fb
+V	21:01:49.584	Reading descriptor 00002902-0000-1000-8000-00805f9b34fb
+D	21:01:49.585	gatt.readDescriptor(00002902-0000-1000-8000-00805f9b34fb)
+I	21:01:49.607	Read Response received from descr. 00002902-0000-1000-8000-00805f9b34fb, value: (0x) 00
+A	21:01:49.607	"Incorrect data length (16bit expected): (0x) 00" received
+V	21:01:52.618	Reading descriptor 00002902-0000-1000-8000-00805f9b34fb
+D	21:01:52.618	gatt.readDescriptor(00002902-0000-1000-8000-00805f9b34fb)
+I	21:01:52.658	Read Response received from descr. 00002902-0000-1000-8000-00805f9b34fb, value: (0x) 00
+A	21:01:52.658	"Incorrect data length (16bit expected): (0x) 00" received
+V	21:01:55.751	Reading descriptor 00002902-0000-1000-8000-00805f9b34fb
+D	21:01:55.751	gatt.readDescriptor(00002902-0000-1000-8000-00805f9b34fb)
+I	21:01:55.783	Read Response received from descr. 00002902-0000-1000-8000-00805f9b34fb, value: (0x) 00
+A	21:01:55.783	"Incorrect data length (16bit expected): (0x) 00" received
+V	21:01:57.671	Reading descriptor 00002901-0000-1000-8000-00805f9b34fb
+D	21:01:57.671	gatt.readDescriptor(00002901-0000-1000-8000-00805f9b34fb)
+I	21:01:57.707	Read Response received from descr. 00002901-0000-1000-8000-00805f9b34fb, value: (0x) 53-65-72-76-65-72-20-54-58-20-44-61-74-61, "Server TX Data"
+A	21:01:57.707	"Server TX Data" received
+V	21:02:03.393	Reading descriptor 00002902-0000-1000-8000-00805f9b34fb
+D	21:02:03.393	gatt.readDescriptor(00002902-0000-1000-8000-00805f9b34fb)
+E	21:02:03.433	Error 2 (0x2): GATT READ NOT PERMIT
+V	21:02:04.088	Reading descriptor 00002902-0000-1000-8000-00805f9b34fb
+D	21:02:04.088	gatt.readDescriptor(00002902-0000-1000-8000-00805f9b34fb)
+E	21:02:04.120	Error 2 (0x2): GATT READ NOT PERMIT
+V	21:02:04.617	Reading descriptor 00002902-0000-1000-8000-00805f9b34fb
+D	21:02:04.617	gatt.readDescriptor(00002902-0000-1000-8000-00805f9b34fb)
+E	21:02:04.645	Error 2 (0x2): GATT READ NOT PERMIT
+V	21:02:06.933	Reading characteristic 00002a05-0000-1000-8000-00805f9b34fb
+D	21:02:06.933	gatt.readCharacteristic(00002a05-0000-1000-8000-00805f9b34fb)
+I	21:02:06.958	Read Response received from 00002a05-0000-1000-8000-00805f9b34fb, value: (0x) 01-00-FF-FF
+A	21:02:06.958	"Affected Attribute Handle Range: 0x0001 - 0xFFFF" received
+V	21:02:12.125	Reading characteristic 00002a00-0000-1000-8000-00805f9b34fb
+D	21:02:12.125	gatt.readCharacteristic(00002a00-0000-1000-8000-00805f9b34fb)
+I	21:02:12.158	Read Response received from 00002a00-0000-1000-8000-00805f9b34fb, value: (0x) 53-57-41-4E, "SWAN"
+A	21:02:12.158	"SWAN" received
+V	21:02:13.116	Reading characteristic 00002a01-0000-1000-8000-00805f9b34fb
+D	21:02:13.116	gatt.readCharacteristic(00002a01-0000-1000-8000-00805f9b34fb)
+I	21:02:13.145	Read Response received from 00002a01-0000-1000-8000-00805f9b34fb, value: (0x) 00-00
+A	21:02:13.145	"[0] Unknown" received
+V	21:02:14.541	Reading characteristic 00002a02-0000-1000-8000-00805f9b34fb
+D	21:02:14.541	gatt.readCharacteristic(00002a02-0000-1000-8000-00805f9b34fb)
+I	21:02:14.582	Read Response received from 00002a02-0000-1000-8000-00805f9b34fb, value: (0x) 00
+A	21:02:14.582	"Privacy is disabled in this device" received
+V	21:02:15.953	Reading characteristic 00002a04-0000-1000-8000-00805f9b34fb
+D	21:02:15.953	gatt.readCharacteristic(00002a04-0000-1000-8000-00805f9b34fb)
+I	21:02:15.982	Read Response received from 00002a04-0000-1000-8000-00805f9b34fb, value: (0x) 08-00-10-00-00-00-64-00
+A	21:02:15.982	"Connection Interval: 10.00ms - 20.00ms,
+Slave Latency: 0,
+Supervision Timeout Multiplier: 100" received
+V	21:02:18.301	Reading characteristic 00002a05-0000-1000-8000-00805f9b34fb
+D	21:02:18.301	gatt.readCharacteristic(00002a05-0000-1000-8000-00805f9b34fb)
+I	21:02:18.332	Read Response received from 00002a05-0000-1000-8000-00805f9b34fb, value: (0x) 01-00-FF-FF
+A	21:02:18.332	"Affected Attribute Handle Range: 0x0001 - 0xFFFF" received
+V	21:02:33.261	Disabling notifications for 0000ffb2-0000-1000-8000-00805f9b34fb
+D	21:02:33.261	gatt.setCharacteristicNotification(0000ffb2-0000-1000-8000-00805f9b34fb, false)
+D	21:02:33.264	gatt.writeDescriptor(00002902-0000-1000-8000-00805f9b34fb, value=0x0000)
+I	21:02:33.295	Data written to descr. 00002902-0000-1000-8000-00805f9b34fb, value: (0x) 00-00
+A	21:02:33.295	"Notifications and indications disabled" sent
+V	21:02:33.297	Notifications and indications disabled for 0000ffb2-0000-1000-8000-00805f9b34fb
+V	21:02:39.581	Reading descriptor 00002901-0000-1000-8000-00805f9b34fb
+D	21:02:39.581	gatt.readDescriptor(00002901-0000-1000-8000-00805f9b34fb)
+I	21:02:39.622	Read Response received from descr. 00002901-0000-1000-8000-00805f9b34fb, value: (0x) 53-65-72-76-65-72-20-54-58-20-44-61-74-61, "Server TX Data"
+A	21:02:39.622	"Server TX Data" received
+V	21:02:40.479	Reading descriptor 00002901-0000-1000-8000-00805f9b34fb
+D	21:02:40.479	gatt.readDescriptor(00002901-0000-1000-8000-00805f9b34fb)
+I	21:02:40.508	Read Response received from descr. 00002901-0000-1000-8000-00805f9b34fb, value: (0x) 53-65-72-76-65-72-20-54-58-20-44-61-74-61, "Server TX Data"
+A	21:02:40.508	"Server TX Data" received
+V	21:02:41.429	Reading descriptor 00002901-0000-1000-8000-00805f9b34fb
+D	21:02:41.429	gatt.readDescriptor(00002901-0000-1000-8000-00805f9b34fb)
+I	21:02:41.458	Read Response received from descr. 00002901-0000-1000-8000-00805f9b34fb, value: (0x) 53-65-72-76-65-72-20-54-58-20-44-61-74-61, "Server TX Data"
+A	21:02:41.458	"Server TX Data" received
+V	21:02:42.259	Reading descriptor 00002902-0000-1000-8000-00805f9b34fb
+D	21:02:42.259	gatt.readDescriptor(00002902-0000-1000-8000-00805f9b34fb)
+E	21:02:42.282	Error 2 (0x2): GATT READ NOT PERMIT
+V	21:02:43.276	Reading descriptor 00002902-0000-1000-8000-00805f9b34fb
+D	21:02:43.276	gatt.readDescriptor(00002902-0000-1000-8000-00805f9b34fb)
+E	21:02:43.296	Error 2 (0x2): GATT READ NOT PERMIT
+V	21:02:43.792	Reading descriptor 00002902-0000-1000-8000-00805f9b34fb
+D	21:02:43.792	gatt.readDescriptor(00002902-0000-1000-8000-00805f9b34fb)
+E	21:02:43.821	Error 2 (0x2): GATT READ NOT PERMIT
+V	21:02:44.542	Reading descriptor 00002902-0000-1000-8000-00805f9b34fb
+D	21:02:44.542	gatt.readDescriptor(00002902-0000-1000-8000-00805f9b34fb)
+E	21:02:44.570	Error 2 (0x2): GATT READ NOT PERMIT
+V	21:02:45.025	Reading descriptor 00002902-0000-1000-8000-00805f9b34fb
+D	21:02:45.025	gatt.readDescriptor(00002902-0000-1000-8000-00805f9b34fb)
+E	21:02:45.045	Error 2 (0x2): GATT READ NOT PERMIT
+V	21:02:46.591	Reading descriptor 00002902-0000-1000-8000-00805f9b34fb
+D	21:02:46.591	gatt.readDescriptor(00002902-0000-1000-8000-00805f9b34fb)
+E	21:02:46.620	Error 2 (0x2): GATT READ NOT PERMIT
+V	21:03:07.523	Reading descriptor 00002901-0000-1000-8000-00805f9b34fb
+D	21:03:07.523	gatt.readDescriptor(00002901-0000-1000-8000-00805f9b34fb)
+I	21:03:07.546	Read Response received from descr. 00002901-0000-1000-8000-00805f9b34fb, value: (0x) 46-6C-6F-77-20-43-6F-6E-74-72-6F-6C, "Flow Control"
+A	21:03:07.546	"Flow Control" received
+V	21:03:08.958	Reading descriptor 00002902-0000-1000-8000-00805f9b34fb
+D	21:03:08.959	gatt.readDescriptor(00002902-0000-1000-8000-00805f9b34fb)
+I	21:03:08.983	Read Response received from descr. 00002902-0000-1000-8000-00805f9b34fb, value: (0x) 00
+A	21:03:08.983	"Incorrect data length (16bit expected): (0x) 00" received
+V	21:03:09.839	Reading descriptor 00002902-0000-1000-8000-00805f9b34fb
+D	21:03:09.839	gatt.readDescriptor(00002902-0000-1000-8000-00805f9b34fb)
+I	21:03:09.859	Read Response received from descr. 00002902-0000-1000-8000-00805f9b34fb, value: (0x) 00
+A	21:03:09.859	"Incorrect data length (16bit expected): (0x) 00" received
+V	21:03:10.362	Reading characteristic 0000ffb3-0000-1000-8000-00805f9b34fb
+D	21:03:10.362	gatt.readCharacteristic(0000ffb3-0000-1000-8000-00805f9b34fb)
+I	21:03:10.398	Read Response received from 0000ffb3-0000-1000-8000-00805f9b34fb, value: 0 bytes
+V	21:03:11.728	Reading characteristic 0000ffb3-0000-1000-8000-00805f9b34fb
+D	21:03:11.728	gatt.readCharacteristic(0000ffb3-0000-1000-8000-00805f9b34fb)
+I	21:03:11.758	Read Response received from 0000ffb3-0000-1000-8000-00805f9b34fb, value: 0 bytes
+V	21:03:19.205	Writing command to characteristic 0000ffb3-0000-1000-8000-00805f9b34fb
+D	21:03:19.205	gatt.writeCharacteristic(0000ffb3-0000-1000-8000-00805f9b34fb, value=0x01)
+I	21:03:19.209	Data written to 0000ffb3-0000-1000-8000-00805f9b34fb, value: (0x) 01
+A	21:03:19.209	"(0x) 01" sent
+V	21:03:25.219	Enabling notifications for 0000ffb2-0000-1000-8000-00805f9b34fb
+D	21:03:25.219	gatt.setCharacteristicNotification(0000ffb2-0000-1000-8000-00805f9b34fb, true)
+D	21:03:25.221	gatt.writeDescriptor(00002902-0000-1000-8000-00805f9b34fb, value=0x0100)
+I	21:03:25.245	Data written to descr. 00002902-0000-1000-8000-00805f9b34fb, value: (0x) 01-00
+A	21:03:25.245	"Notifications enabled" sent
+V	21:03:25.248	Notifications enabled for 0000ffb2-0000-1000-8000-00805f9b34fb
+V	21:03:30.918	Disabling notifications for 0000ffb2-0000-1000-8000-00805f9b34fb
+D	21:03:30.918	gatt.setCharacteristicNotification(0000ffb2-0000-1000-8000-00805f9b34fb, false)
+D	21:03:30.921	gatt.writeDescriptor(00002902-0000-1000-8000-00805f9b34fb, value=0x0000)
+I	21:03:30.946	Data written to descr. 00002902-0000-1000-8000-00805f9b34fb, value: (0x) 00-00
+A	21:03:30.946	"Notifications and indications disabled" sent
+V	21:03:30.948	Notifications and indications disabled for 0000ffb2-0000-1000-8000-00805f9b34fb
+V	21:03:38.733	Enabling notifications for 0000ffb3-0000-1000-8000-00805f9b34fb
+D	21:03:38.733	gatt.setCharacteristicNotification(0000ffb3-0000-1000-8000-00805f9b34fb, true)
+D	21:03:38.735	gatt.writeDescriptor(00002902-0000-1000-8000-00805f9b34fb, value=0x0100)
+I	21:03:38.771	Data written to descr. 00002902-0000-1000-8000-00805f9b34fb, value: (0x) 01-00
+A	21:03:38.771	"Notifications enabled" sent
+V	21:03:38.774	Notifications enabled for 0000ffb3-0000-1000-8000-00805f9b34fb
+I	21:03:38.781	Notification received from 0000ffb3-0000-1000-8000-00805f9b34fb, value: (0x) 01
+A	21:03:38.781	"(0x) 01" received
+V	21:03:55.811	Writing command to characteristic 0000ffb3-0000-1000-8000-00805f9b34fb
+D	21:03:55.811	gatt.writeCharacteristic(0000ffb3-0000-1000-8000-00805f9b34fb, value=0x0100)
+I	21:03:55.817	Data written to 0000ffb3-0000-1000-8000-00805f9b34fb, value: (0x) 01-00
+A	21:03:55.817	"(0x) 01-00" sent
+V	21:04:09.460	Writing command to characteristic 0000ffb1-0000-1000-8000-00805f9b34fb
+D	21:04:09.460	gatt.writeCharacteristic(0000ffb1-0000-1000-8000-00805f9b34fb, value=0x0100)
+I	21:04:09.464	Data written to 0000ffb1-0000-1000-8000-00805f9b34fb, value: (0x) 01-00
+A	21:04:09.464	"(0x) 01-00" sent
+V	21:04:18.839	Enabling notifications for 0000ffb2-0000-1000-8000-00805f9b34fb
+D	21:04:18.839	gatt.setCharacteristicNotification(0000ffb2-0000-1000-8000-00805f9b34fb, true)
+D	21:04:18.842	gatt.writeDescriptor(00002902-0000-1000-8000-00805f9b34fb, value=0x0100)
+I	21:04:18.873	Notification received from 0000ffb2-0000-1000-8000-00805f9b34fb, value: (0x) AC-05-00-01-7E-10-CE-5D
+A	21:04:18.873	"(0x) AC-05-00-01-7E-10-CE-5D" received
+I	21:04:18.873	Data written to descr. 00002902-0000-1000-8000-00805f9b34fb, value: (0x) 01-00
+A	21:04:18.873	"Notifications enabled" sent
+V	21:04:18.877	Notifications enabled for 0000ffb2-0000-1000-8000-00805f9b34fb
+I	21:04:18.936	Notification received from 0000ffb2-0000-1000-8000-00805f9b34fb, value: (0x) AC-05-00-01-7E-10-CE-5D
+A	21:04:18.936	"(0x) AC-05-00-01-7E-10-CE-5D" received
+I	21:04:18.998	Notification received from 0000ffb2-0000-1000-8000-00805f9b34fb, value: (0x) AC-05-00-01-7E-10-CE-5D
+A	21:04:18.998	"(0x) AC-05-00-01-7E-10-CE-5D" received
+I	21:04:19.060	Notification received from 0000ffb2-0000-1000-8000-00805f9b34fb, value: (0x) AC-05-00-01-7E-10-CE-5D
+A	21:04:19.060	"(0x) AC-05-00-01-7E-10-CE-5D" received
+I	21:04:19.134	Notification received from 0000ffb2-0000-1000-8000-00805f9b34fb, value: (0x) AC-05-00-01-7E-10-CE-5D
+A	21:04:19.134	"(0x) AC-05-00-01-7E-10-CE-5D" received
+I	21:04:19.198	Notification received from 0000ffb2-0000-1000-8000-00805f9b34fb, value: (0x) AC-05-00-01-7E-10-CE-5D
+A	21:04:19.198	"(0x) AC-05-00-01-7E-10-CE-5D" received
+I	21:04:19.261	Notification received from 0000ffb2-0000-1000-8000-00805f9b34fb, value: (0x) AC-05-00-01-7E-10-CE-5D
+A	21:04:19.261	"(0x) AC-05-00-01-7E-10-CE-5D" received
+I	21:04:19.334	Notification received from 0000ffb2-0000-1000-8000-00805f9b34fb, value: (0x) AC-05-00-01-7E-10-CE-5D
+A	21:04:19.334	"(0x) AC-05-00-01-7E-10-CE-5D" received
+I	21:04:19.398	Notification received from 0000ffb2-0000-1000-8000-00805f9b34fb, value: (0x) AC-05-00-01-7E-10-CE-5D
+A	21:04:19.398	"(0x) AC-05-00-01-7E-10-CE-5D" received
+I	21:04:19.461	Notification received from 0000ffb2-0000-1000-8000-00805f9b34fb, value: (0x) AC-05-00-01-7E-10-CE-5D
+A	21:04:19.461	"(0x) AC-05-00-01-7E-10-CE-5D" received
+I	21:04:19.524	Notification received from 0000ffb2-0000-1000-8000-00805f9b34fb, value: (0x) AC-05-00-01-7E-10-CE-5D
+A	21:04:19.524	"(0x) AC-05-00-01-7E-10-CE-5D" received
+I	21:04:19.598	Notification received from 0000ffb2-0000-1000-8000-00805f9b34fb, value: (0x) AC-05-00-01-7E-10-CE-5D
+A	21:04:19.599	"(0x) AC-05-00-01-7E-10-CE-5D" received
+I	21:04:19.661	Notification received from 0000ffb2-0000-1000-8000-00805f9b34fb, value: (0x) AC-05-00-01-7E-10-CE-5D
+A	21:04:19.661	"(0x) AC-05-00-01-7E-10-CE-5D" received
+I	21:04:19.723	Notification received from 0000ffb2-0000-1000-8000-00805f9b34fb, value: (0x) AC-05-00-01-7E-10-CE-5D
+A	21:04:19.723	"(0x) AC-05-00-01-7E-10-CE-5D" received
+I	21:04:19.798	Notification received from 0000ffb2-0000-1000-8000-00805f9b34fb, value: (0x) AC-05-00-01-7E-10-CE-5D
+A	21:04:19.798	"(0x) AC-05-00-01-7E-10-CE-5D" received
+I	21:04:19.859	Notification received from 0000ffb2-0000-1000-8000-00805f9b34fb, value: (0x) AC-05-00-01-7E-10-CE-5D
+A	21:04:19.859	"(0x) AC-05-00-01-7E-10-CE-5D" received
+I	21:04:20.186	Notification received from 0000ffb2-0000-1000-8000-00805f9b34fb, value: (0x) AC-05-00-01-7E-10-CE-5D
+A	21:04:20.186	"(0x) AC-05-00-01-7E-10-CE-5D" received
+I	21:04:20.323	Notification received from 0000ffb2-0000-1000-8000-00805f9b34fb, value: (0x) AC-05-00-01-7E-10-CE-5D
+A	21:04:20.323	"(0x) AC-05-00-01-7E-10-CE-5D" received
+I	21:04:20.450	Notification received from 0000ffb2-0000-1000-8000-00805f9b34fb, value: (0x) AC-05-00-01-7E-10-CE-5D
+A	21:04:20.450	"(0x) AC-05-00-01-7E-10-CE-5D" received
+I	21:04:20.586	Notification received from 0000ffb2-0000-1000-8000-00805f9b34fb, value: (0x) AC-05-00-01-7E-10-CE-5D
+A	21:04:20.586	"(0x) AC-05-00-01-7E-10-CE-5D" received
+I	21:04:20.722	Notification received from 0000ffb2-0000-1000-8000-00805f9b34fb, value: (0x) AC-05-00-01-7E-10-CE-5D
+A	21:04:20.722	"(0x) AC-05-00-01-7E-10-CE-5D" received
+I	21:04:20.987	Notification received from 0000ffb2-0000-1000-8000-00805f9b34fb, value: (0x) AC-05-00-01-7E-10-CE-5D
+A	21:04:20.987	"(0x) AC-05-00-01-7E-10-CE-5D" received
+I	21:04:21.112	Notification received from 0000ffb2-0000-1000-8000-00805f9b34fb, value: (0x) AC-05-00-01-AD-10-CE-8C
+A	21:04:21.112	"(0x) AC-05-00-01-AD-10-CE-8C" received
+I	21:04:21.247	Notification received from 0000ffb2-0000-1000-8000-00805f9b34fb, value: (0x) AC-05-00-01-C3-10-CE-A2
+A	21:04:21.248	"(0x) AC-05-00-01-C3-10-CE-A2" received
+I	21:04:21.386	Notification received from 0000ffb2-0000-1000-8000-00805f9b34fb, value: (0x) AC-05-00-01-D4-10-CE-B3
+A	21:04:21.386	"(0x) AC-05-00-01-D4-10-CE-B3" received
+I	21:04:21.510	Notification received from 0000ffb2-0000-1000-8000-00805f9b34fb, value: (0x) AC-05-00-01-D2-10-CE-B1
+A	21:04:21.511	"(0x) AC-05-00-01-D2-10-CE-B1" received
+I	21:04:21.773	Notification received from 0000ffb2-0000-1000-8000-00805f9b34fb, value: (0x) AC-05-00-01-D8-10-CE-B7
+A	21:04:21.773	"(0x) AC-05-00-01-D8-10-CE-B7" received
+I	21:04:21.911	Notification received from 0000ffb2-0000-1000-8000-00805f9b34fb, value: (0x) AC-05-00-01-F2-10-CE-D1
+A	21:04:21.911	"(0x) AC-05-00-01-F2-10-CE-D1" received
+I	21:04:22.036	Notification received from 0000ffb2-0000-1000-8000-00805f9b34fb, value: (0x) AC-05-00-02-0B-10-CE-EB
+A	21:04:22.036	"(0x) AC-05-00-02-0B-10-CE-EB" received
+I	21:04:22.111	Notification received from 0000ffb2-0000-1000-8000-00805f9b34fb, value: (0x) AC-05-00-02-24-10-CE-04
+A	21:04:22.111	"(0x) AC-05-00-02-24-10-CE-04" received
+I	21:04:22.310	Notification received from 0000ffb2-0000-1000-8000-00805f9b34fb, value: (0x) AC-05-00-01-F6-10-CE-D5
+A	21:04:22.310	"(0x) AC-05-00-01-F6-10-CE-D5" received
+I	21:04:22.372	Notification received from 0000ffb2-0000-1000-8000-00805f9b34fb, value: (0x) AC-05-00-01-C7-10-CE-A6
+A	21:04:22.372	"(0x) AC-05-00-01-C7-10-CE-A6" received
+I	21:04:22.498	Notification received from 0000ffb2-0000-1000-8000-00805f9b34fb, value: (0x) AC-05-00-01-99-10-CE-78
+A	21:04:22.498	"(0x) AC-05-00-01-99-10-CE-78" received
+I	21:04:22.634	Notification received from 0000ffb2-0000-1000-8000-00805f9b34fb, value: (0x) AC-05-00-01-81-10-CE-60
+A	21:04:22.634	"(0x) AC-05-00-01-81-10-CE-60" received
+I	21:04:22.774	Notification received from 0000ffb2-0000-1000-8000-00805f9b34fb, value: (0x) AC-05-00-01-81-10-CE-60
+A	21:04:22.774	"(0x) AC-05-00-01-81-10-CE-60" received
+I	21:04:22.850	Notification received from 0000ffb2-0000-1000-8000-00805f9b34fb, value: (0x) AC-05-00-01-81-10-CE-60
+A	21:04:22.850	"(0x) AC-05-00-01-81-10-CE-60" received
+I	21:04:22.898	Notification received from 0000ffb2-0000-1000-8000-00805f9b34fb, value: (0x) AC-05-00-01-7E-10-CE-5D
+A	21:04:22.898	"(0x) AC-05-00-01-7E-10-CE-5D" received
+I	21:04:22.960	Notification received from 0000ffb2-0000-1000-8000-00805f9b34fb, value: (0x) AC-05-00-01-7E-10-CE-5D
+A	21:04:22.960	"(0x) AC-05-00-01-7E-10-CE-5D" received
+I	21:04:23.035	Notification received from 0000ffb2-0000-1000-8000-00805f9b34fb, value: (0x) AC-05-00-01-7E-10-CE-5D
+A	21:04:23.035	"(0x) AC-05-00-01-7E-10-CE-5D" received
+I	21:04:23.098	Notification received from 0000ffb2-0000-1000-8000-00805f9b34fb, value: (0x) AC-05-00-01-7E-10-CE-5D
+A	21:04:23.098	"(0x) AC-05-00-01-7E-10-CE-5D" received
+I	21:04:23.160	Notification received from 0000ffb2-0000-1000-8000-00805f9b34fb, value: (0x) AC-05-00-01-7E-10-CE-5D
+A	21:04:23.160	"(0x) AC-05-00-01-7E-10-CE-5D" received
+I	21:04:23.237	Notification received from 0000ffb2-0000-1000-8000-00805f9b34fb, value: (0x) AC-05-00-01-7E-10-CE-5D
+A	21:04:23.237	"(0x) AC-05-00-01-7E-10-CE-5D" received
+I	21:04:23.298	Notification received from 0000ffb2-0000-1000-8000-00805f9b34fb, value: (0x) AC-05-00-01-7E-10-CE-5D
+A	21:04:23.298	"(0x) AC-05-00-01-7E-10-CE-5D" received
+I	21:04:23.360	Notification received from 0000ffb2-0000-1000-8000-00805f9b34fb, value: (0x) AC-05-00-01-7E-10-CE-5D
+A	21:04:23.360	"(0x) AC-05-00-01-7E-10-CE-5D" received
+I	21:04:23.423	Notification received from 0000ffb2-0000-1000-8000-00805f9b34fb, value: (0x) AC-05-00-01-7E-10-CE-5D
+A	21:04:23.423	"(0x) AC-05-00-01-7E-10-CE-5D" received
+I	21:04:23.499	Notification received from 0000ffb2-0000-1000-8000-00805f9b34fb, value: (0x) AC-05-00-01-7E-10-CE-5D
+A	21:04:23.499	"(0x) AC-05-00-01-7E-10-CE-5D" received
+I	21:04:23.560	Notification received from 0000ffb2-0000-1000-8000-00805f9b34fb, value: (0x) AC-05-00-01-7E-10-CE-5D
+A	21:04:23.560	"(0x) AC-05-00-01-7E-10-CE-5D" received
+I	21:04:23.623	Notification received from 0000ffb2-0000-1000-8000-00805f9b34fb, value: (0x) AC-05-00-01-7E-10-CE-5D
+A	21:04:23.623	"(0x) AC-05-00-01-7E-10-CE-5D" received
+I	21:04:23.697	Notification received from 0000ffb2-0000-1000-8000-00805f9b34fb, value: (0x) AC-05-00-01-7E-10-CE-5D
+A	21:04:23.697	"(0x) AC-05-00-01-7E-10-CE-5D" received
+I	21:04:23.761	Notification received from 0000ffb2-0000-1000-8000-00805f9b34fb, value: (0x) AC-05-00-01-7E-10-CE-5D
+A	21:04:23.761	"(0x) AC-05-00-01-7E-10-CE-5D" received
+I	21:04:23.822	Notification received from 0000ffb2-0000-1000-8000-00805f9b34fb, value: (0x) AC-05-00-01-7E-10-CE-5D
+A	21:04:23.822	"(0x) AC-05-00-01-7E-10-CE-5D" received
+I	21:04:23.885	Notification received from 0000ffb2-0000-1000-8000-00805f9b34fb, value: (0x) AC-05-00-01-7E-10-CE-5D
+A	21:04:23.885	"(0x) AC-05-00-01-7E-10-CE-5D" received
+I	21:04:23.960	Notification received from 0000ffb2-0000-1000-8000-00805f9b34fb, value: (0x) AC-05-00-01-7E-10-CE-5D
+A	21:04:23.960	"(0x) AC-05-00-01-7E-10-CE-5D" received
+I	21:04:24.024	Notification received from 0000ffb2-0000-1000-8000-00805f9b34fb, value: (0x) AC-05-00-01-7E-10-CE-5D
+A	21:04:24.024	"(0x) AC-05-00-01-7E-10-CE-5D" received
+I	21:04:24.084	Notification received from 0000ffb2-0000-1000-8000-00805f9b34fb, value: (0x) AC-05-00-01-7E-10-CE-5D
+A	21:04:24.084	"(0x) AC-05-00-01-7E-10-CE-5D" received
+I	21:04:24.160	Notification received from 0000ffb2-0000-1000-8000-00805f9b34fb, value: (0x) AC-05-00-01-7E-10-CE-5D
+A	21:04:24.160	"(0x) AC-05-00-01-7E-10-CE-5D" received
+I	21:04:24.222	Notification received from 0000ffb2-0000-1000-8000-00805f9b34fb, value: (0x) AC-05-00-01-7E-10-CE-5D
+A	21:04:24.222	"(0x) AC-05-00-01-7E-10-CE-5D" received
+I	21:04:24.286	Notification received from 0000ffb2-0000-1000-8000-00805f9b34fb, value: (0x) AC-05-00-01-7E-10-CE-5D
+A	21:04:24.286	"(0x) AC-05-00-01-7E-10-CE-5D" received
+I	21:04:24.348	Notification received from 0000ffb2-0000-1000-8000-00805f9b34fb, value: (0x) AC-05-00-01-7E-10-CE-5D
+A	21:04:24.348	"(0x) AC-05-00-01-7E-10-CE-5D" received
+I	21:04:24.422	Notification received from 0000ffb2-0000-1000-8000-00805f9b34fb, value: (0x) AC-05-00-01-7E-10-CE-5D
+A	21:04:24.422	"(0x) AC-05-00-01-7E-10-CE-5D" received
+I	21:04:24.486	Notification received from 0000ffb2-0000-1000-8000-00805f9b34fb, value: (0x) AC-05-00-01-7E-10-CE-5D
+A	21:04:24.486	"(0x) AC-05-00-01-7E-10-CE-5D" received
+I	21:04:24.549	Notification received from 0000ffb2-0000-1000-8000-00805f9b34fb, value: (0x) AC-05-00-01-7E-10-CE-5D
+A	21:04:24.549	"(0x) AC-05-00-01-7E-10-CE-5D" received
+I	21:04:24.623	Notification received from 0000ffb2-0000-1000-8000-00805f9b34fb, value: (0x) AC-05-00-01-7E-10-CE-5D
+A	21:04:24.623	"(0x) AC-05-00-01-7E-10-CE-5D" received
+I	21:04:24.686	Notification received from 0000ffb2-0000-1000-8000-00805f9b34fb, value: (0x) AC-05-00-01-7E-10-CE-5D
+A	21:04:24.686	"(0x) AC-05-00-01-7E-10-CE-5D" received
+I	21:04:24.748	Notification received from 0000ffb2-0000-1000-8000-00805f9b34fb, value: (0x) AC-05-00-01-7E-10-CE-5D
+A	21:04:24.748	"(0x) AC-05-00-01-7E-10-CE-5D" received
+I	21:04:24.811	Notification received from 0000ffb2-0000-1000-8000-00805f9b34fb, value: (0x) AC-05-00-01-7E-10-CE-5D
+A	21:04:24.811	"(0x) AC-05-00-01-7E-10-CE-5D" received
+I	21:04:24.884	Notification received from 0000ffb2-0000-1000-8000-00805f9b34fb, value: (0x) AC-05-00-01-7E-10-CE-5D
+A	21:04:24.884	"(0x) AC-05-00-01-7E-10-CE-5D" received
+I	21:04:24.949	Notification received from 0000ffb2-0000-1000-8000-00805f9b34fb, value: (0x) AC-05-00-01-7E-10-CE-5D
+A	21:04:24.949	"(0x) AC-05-00-01-7E-10-CE-5D" received
+I	21:04:25.012	Notification received from 0000ffb2-0000-1000-8000-00805f9b34fb, value: (0x) AC-05-00-01-7E-10-CE-5D
+A	21:04:25.012	"(0x) AC-05-00-01-7E-10-CE-5D" received
+I	21:04:25.085	Notification received from 0000ffb2-0000-1000-8000-00805f9b34fb, value: (0x) AC-05-00-01-7E-10-CE-5D
+A	21:04:25.085	"(0x) AC-05-00-01-7E-10-CE-5D" received
+I	21:04:25.149	Notification received from 0000ffb2-0000-1000-8000-00805f9b34fb, value: (0x) AC-05-00-01-7E-10-CE-5D
+A	21:04:25.149	"(0x) AC-05-00-01-7E-10-CE-5D" received
+I	21:04:25.210	Notification received from 0000ffb2-0000-1000-8000-00805f9b34fb, value: (0x) AC-05-00-01-7E-10-CE-5D
+A	21:04:25.210	"(0x) AC-05-00-01-7E-10-CE-5D" received
+I	21:04:25.275	Notification received from 0000ffb2-0000-1000-8000-00805f9b34fb, value: (0x) AC-05-00-01-7E-10-CE-5D
+A	21:04:25.275	"(0x) AC-05-00-01-7E-10-CE-5D" received
+V	21:04:25.333	Disabling notifications for 0000ffb2-0000-1000-8000-00805f9b34fb
+D	21:04:25.333	gatt.setCharacteristicNotification(0000ffb2-0000-1000-8000-00805f9b34fb, false)
+D	21:04:25.336	gatt.writeDescriptor(00002902-0000-1000-8000-00805f9b34fb, value=0x0000)
+I	21:04:25.371	Data written to descr. 00002902-0000-1000-8000-00805f9b34fb, value: (0x) 00-00
+A	21:04:25.371	"Notifications and indications disabled" sent
+V	21:04:25.375	Notifications and indications disabled for 0000ffb2-0000-1000-8000-00805f9b34fb

@@ -1,0 +1,111 @@
+<script setup lang="ts">
+import { ref } from 'vue';
+import { pausableWatch, useBluetooth } from '@vueuse/core'
+
+
+/*
+*  
+*  
+* 
+* 
+*/
+// const SCALE_MAC = '03:B3:EC:8D:F1:21'
+const SERVICE_UUID =  0xFFB0 //'0000fb0-0000-1000-8000-00805f9b34fb' //'0xFFB0'
+// const NOTIFICATOIN_UUID = 0x2902 //'00002902-0000-1000-8000-00805f9b34fb' //write value 0x0100
+const NOTFIY_UUID =  0xFFB2 //  
+const WRITE_UUID =  0xFFB1 // '0000fb1-0000-1000-8000-00805f9b34fb' // '0xFFB1' 
+
+const {
+  isSupported,
+  isConnected,
+  device,
+  requestDevice,
+  server,
+  error,
+} = useBluetooth({
+  acceptAllDevices: true,
+  optionalServices: [
+    SERVICE_UUID,
+  ],
+})
+
+
+const isGettingBatteryLevels = ref(false)
+
+async function getScale() {
+  isGettingBatteryLevels.value = true
+
+  const scaleService = await server.value?.getPrimaryService(SERVICE_UUID)
+  console.log('Service', scaleService);
+  console.log('Service Characteristics', scaleService?.getCharacteristics());
+
+
+  //
+  // Get the current battery level
+  const scaleCharacteristic = await scaleService?.getCharacteristic(
+    NOTFIY_UUID,
+  )
+  await scaleCharacteristic?.startNotifications();
+  
+  // Get the current battery level
+  const writeCharacteristic = await scaleService?.getCharacteristic(
+    WRITE_UUID,
+  )
+  const descriptor = await  writeCharacteristic?.getDescriptor(0x2902);
+  let arrayBuffer = new Uint8Array([0x01, 0x00]);
+
+  descriptor?.writeValue(arrayBuffer).then(() => console.log('then')).catch((e) => console.log(e));
+  
+  // Listen to when characteristic value changes on `characteristicvaluechanged` event:
+  scaleCharacteristic?.addEventListener('characteristicvaluechanged', (event) => {
+    console.log('Characteristic Changed', event?.target);
+    // batteryPercent.value = event.target.value.getUint8(0)
+  })
+
+
+  // Convert received buffer to number:
+  const scaleWeight = await scaleCharacteristic?.readValue()
+  console.log('scaleWeight', scaleWeight);
+
+}
+
+const { stop } = pausableWatch(isConnected, (newIsConnected) => {
+  if (!newIsConnected || !server.value || isGettingBatteryLevels.value)
+    return
+  // Attempt to get the battery levels of the device:
+  getScale()
+  // We only want to run this on the initial connection, as we will use an event listener to handle updates:
+  stop()
+})
+</script>
+
+<template>
+  <div class="grid grid-cols-1 gap-x-4 gap-y-4">
+    <div>{{ isSupported ? 'Bluetooth Web API Supported' : 'Your browser does not support the Bluetooth Web API' }}</div>
+
+    <div v-if="isSupported">
+      <button @click="requestDevice()">
+        Request Bluetooth Device
+      </button>
+    </div>
+
+    <div v-if="device">
+      <p>Device Name: {{ device.name }}</p>
+    </div>
+
+    <div v-if="isConnected" class="bg-green-500 text-white p-3 rounded-md">
+      <p>Connected</p>
+    </div>
+
+    <div v-if="!isConnected" class="bg-orange-800 text-white p-3 rounded-md">
+      <p>Not Connected</p>
+    </div>
+
+    <div v-if="error">
+      <div>Errors:</div>
+      <pre>
+      <code class="block p-5 whitespace-pre">{{ error }}</code>
+    </pre>
+    </div>
+  </div>
+</template>
