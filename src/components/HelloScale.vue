@@ -1,8 +1,11 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import { ref } from 'vue';
 import { pausableWatch, useBluetooth } from '@vueuse/core'
-
-
+import type { BluetoothRemoteGATTCharacteristic } from 'web-bluetooth'
+i
+interface BLEEvent { 
+  value: BluetoothRemoteGATTCharacteristic
+}
 /*
 *  
 *  
@@ -58,7 +61,12 @@ async function getScale() {
   
   // Listen to when characteristic value changes on `characteristicvaluechanged` event:
   scaleCharacteristic?.addEventListener('characteristicvaluechanged', (event) => {
-    console.log('Characteristic Changed', event?.target);
+    console.log('Characteristic Changed', event?);
+    
+    //    event?.target?.value.getUint8()
+    // 0,...,7
+    // 256*buffer[3] + buffer[4] = number
+    // if (buffer[5]) -number else  
     // batteryPercent.value = event.target.value.getUint8(0)
   })
 
