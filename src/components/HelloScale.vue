@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
 import { pausableWatch, useBluetooth } from '@vueuse/core'
-// import type { BluetoothRemoteGATTCharacteristic } from '@types/web-bluetooth'
-import type { BluetoothRemoteGATTCharacteristic } from 'web-bluetooth'
+// import type { BluetoothRemoteGATTCharacteristic } from 'web-bluetooth'
+
 
 /*
 *  
@@ -15,6 +15,8 @@ const SERVICE_UUID =  0xFFB0 //'0000fb0-0000-1000-8000-00805f9b34fb' //'0xFFB0'
 // const NOTIFICATOIN_UUID = 0x2902 //'00002902-0000-1000-8000-00805f9b34fb' //write value 0x0100
 const NOTFIY_UUID =  0xFFB2 //  
 const WRITE_UUID =  0xFFB1 // '0000fb1-0000-1000-8000-00805f9b34fb' // '0xFFB1' 
+
+const scaleUnit = ref<number | undefined>(0)
 
 const {
   isSupported,
@@ -41,31 +43,35 @@ async function getScale() {
   console.log('Service Characteristics', scaleService?.getCharacteristics());
 
 
-  //
-  // Get the current battery level
+  // Subscribe to notifications
   const scaleCharacteristic = await scaleService?.getCharacteristic(
     NOTFIY_UUID,
   )
   await scaleCharacteristic?.startNotifications();
   
-  // Get the current battery level
   const writeCharacteristic = await scaleService?.getCharacteristic(
     WRITE_UUID,
   )
-  const descriptor = await  writeCharacteristic?.getDescriptor(0x2902);
-  let arrayBuffer = new Uint8Array([0x01, 0x00]);
+  let arrayBuffer = new Uint8Array([0x01]);
+  await writeCharacteristic.writeValue(arrayBuffer);
 
-  descriptor?.writeValue(arrayBuffer).then(() => console.log('then')).catch((e) => console.log(e));
-  
+  //const descriptor = await  writeCharacteristic?.getDescriptor(WRITE_UUID);
+  //let arrayBuffer = new Uint8Array([0x01]);
+
+  //await descriptor?.writeValue(arrayBuffer).then(() => console.log('then')).catch((e) => console.log(e));
+  // 0,...,7
+  // 256*buffer[3] + buffer[4] = number
+  // if (buffer[5]) -number else  
+  // batteryPercent.value = event.target.value.getUint8(0)
   // Listen to when characteristic value changes on `characteristicvaluechanged` event:
   scaleCharacteristic?.addEventListener('characteristicvaluechanged', (event) => {
-    console.log('Characteristic Changed', event?);
-    
-    //    event?.target?.value.getUint8()
-    // 0,...,7
-    // 256*buffer[3] + buffer[4] = number
-    // if (buffer[5]) -number else  
-    // batteryPercent.value = event.target.value.getUint8(0)
+    //
+    if (event?.target?.value?.getUint8(5) ?? false) {
+      scaleUnit.value =  -1 * (event?.target?.value?.getUint8(3) ?? 0)  * 256 + -1 * (event?.target?.value?.getUint8(4) ?? 0);
+    } else {
+      scaleUnit.value = (event?.target?.value?.getUint8(3) ?? 0)  * 256 + (event?.target?.value?.getUint8(4) ?? 0);
+    }
+    console.log(scaleUnit.value)
   })
 
 
@@ -93,6 +99,9 @@ const { stop } = pausableWatch(isConnected, (newIsConnected) => {
       <button @click="requestDevice()">
         Request Bluetooth Device
       </button>
+    </div>
+    <div>
+      {{  scaleUnit }}
     </div>
 
     <div v-if="device">
