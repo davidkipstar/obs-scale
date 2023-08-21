@@ -12,10 +12,8 @@ import { pausableWatch, useBluetooth } from '@vueuse/core'
 */
 // const SCALE_MAC = '03:B3:EC:8D:F1:21'
 const SERVICE_UUID =  0xFFB0 //'0000fb0-0000-1000-8000-00805f9b34fb' //'0xFFB0'
-// const NOTIFICATOIN_UUID = 0x2902 //'00002902-0000-1000-8000-00805f9b34fb' //write value 0x0100
-const NOTFIY_UUID =  0xFFB2 //  
-const WRITE_UUID =  0xFFB1 // '0000fb1-0000-1000-8000-00805f9b34fb' // '0xFFB1' 
-
+const NOTFIY_UUID =  0xFFB2 // 
+const WRITE_UUID =  0xFFB1 // Write 0x01 to characteristic to start notifications
 const scaleUnit = ref<number | undefined>(0)
 
 const {
@@ -73,11 +71,6 @@ async function getScale() {
     }
     console.log(scaleUnit.value)
   })
-
-
-  // Convert received buffer to number:
-  const scaleWeight = await scaleCharacteristic?.readValue()
-  console.log('scaleWeight', scaleWeight);
 
 }
 
